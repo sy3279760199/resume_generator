@@ -1,0 +1,26 @@
+body {
+    background: #f5f5f5;
+}
+
+.resume {
+    width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 16px;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+p {
+    margin: 5px 0;
+}
