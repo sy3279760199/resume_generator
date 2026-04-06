@@ -1,25 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import NameSection from './sections/NameSection.vue'
+import SkillSection from './sections/SkillSection.vue'
 
-const { resume } = defineProps(['resume'])
+const props = defineProps({
+  resume: Object
+})
 
-const newSkill = ref('')
-
-const emit = defineEmits(['add-skill'])
-
-function addSkill() {
-  if (newSkill.value.trim() !== '') {
-    emit('add-skill', newSkill.value)
-    newSkill.value = ''
-  }
-}
-
+defineEmits(['add-skill'])
 </script>
 
 <template>
-  <div class="editor">
-    <input v-model="resume.name" placeholder="请输入你的名字" />
-    <input v-model="newSkill" placeholder="请添加技能" />
-    <button @click="addSkill">添加</button>
-  </div>
+  <NameSection v-model="resume.name" />
+<SkillSection @add-skill="$emit('add-skill', $event)" />
 </template>

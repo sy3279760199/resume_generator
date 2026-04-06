@@ -1,8 +1,9 @@
 <script setup>
-//defineProps(['resume'])
+import { ref } from 'vue'
 
-const { resume } = defineProps(['resume'])
+defineProps(['resume'])
 
+const newSkill = ref('')
 const emit = defineEmits(['remove'])
 
 function removeSkill(index) {
