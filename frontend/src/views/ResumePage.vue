@@ -6,8 +6,10 @@ const props = defineProps({
   resume: Object
 })
 
-const previewRef = ref(null)
+const previewRef = ref(null)//定义一个“引用”，用来绑定页面元素（DOM）
 
+//定义一个函数：点击导出按钮时执行，获取预览区域的HTML内容，构造一个完整的HTML文档字符串，
+// 并调用exportPDF函数发送请求，最后处理返回的PDF文件进行下载。
 const handleExport = async () => {
   const previewElement = previewRef.value
   if (!previewElement) {
@@ -15,8 +17,9 @@ const handleExport = async () => {
     return
   }
 
-  const html = previewElement.innerHTML
-  
+  const html = previewElement.innerHTML//获取预览区域的HTML内容
+
+  // 构造一个完整的HTML文档字符串，包含样式和内容
   const styledHtml = `
     <!DOCTYPE html>
     <html>
@@ -134,15 +137,16 @@ const handleExport = async () => {
     const res = await exportPDF(styledHtml)
 
     const blob = new Blob([res.data], { type: "application/pdf" })
-    const url = URL.createObjectURL(blob)
+    const url = URL.createObjectURL(blob)//给这个文件生成一个“临时下载链接”
 
-    const a = document.createElement("a")
+    const a = document.createElement("a")//创建一个 <a> 标签
     a.href = url
     a.download = "resume.pdf"
-    a.click()
-
-    URL.revokeObjectURL(url)
-  } catch (err) {
+    a.click()//浏览器模拟用户点击下载
+    
+    URL.revokeObjectURL(url)//删除刚刚创建的临时链接（防止内存泄漏）
+  } 
+  catch (err) {
     console.error("PDF导出失败:", err)
     alert("PDF导出失败，请重试")
   }
@@ -153,7 +157,7 @@ const handleExport = async () => {
 <template>
   <div class="page-container">
     <!-- 预览区域 -->
-    <div class="preview a4" ref="previewRef">
+    <div class="preview a4" ref="previewRef"><!-- 拿到ref -->
       <!-- 姓名 -->
       <h2 class="section-title">姓名</h2>
       <h1 v-if="resume.name">
