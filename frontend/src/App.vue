@@ -4,8 +4,8 @@ import axios from 'axios'
 import { debounce } from 'lodash-es'//防抖函数，避免频繁put请求
 window.axios = axios// 全局暴露 axios，方便调试
 
-import ResumeEditor from './components/ResumeEditor.vue'
-import ResumePreview from './components/ResumePreview.vue'
+import ResumeEditor from './views/ResumeEditor.vue'
+import ResumePage from './views/ResumePage.vue'
 
 const resume = reactive({
   name: '',
@@ -14,6 +14,7 @@ const resume = reactive({
   experiences: [],
   projects: []
 })
+
 
 let isReady = false
 
@@ -41,12 +42,8 @@ onMounted(() => {
 
 <template>
   <div class="container">
-    <ResumeEditor
-    :resume="resume"
-  />
-  
-    <ResumePreview :resume="resume" />
-
+    <ResumeEditor :resume="resume" />
+    <ResumePage :resume="resume" />
   </div>
 </template>
 

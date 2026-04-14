@@ -1,9 +1,9 @@
 <script setup>
-import NameSection from './sections/NameSection.vue'
-import SkillSection from './sections/SkillSection.vue'
-import EducationSection from './sections/EducationSection.vue'
-import ExperienceSection from './sections/ExperienceSection.vue'
-import ProjectSection from './sections/ProjectSection.vue'
+import NameSection from '../components/NameSection.vue'
+import SkillSection from '../components/SkillSection.vue'
+import EducationSection from '../components/EducationSection.vue'
+import ExperienceSection from '../components/ExperienceSection.vue'
+import ProjectSection from '../components/ProjectSection.vue'
 
 const props = defineProps({
   resume: Object
