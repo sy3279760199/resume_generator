@@ -9,6 +9,7 @@ const company = ref('')
 const role = ref('')
 const time = ref('')
 const desc = ref('')
+const desc2 = ref('')
 
 function addExp() {
   if (!company.value.trim()) return
@@ -17,13 +18,15 @@ function addExp() {
     company: company.value,
     role: role.value,
     time: time.value,
-    desc: desc.value
+    desc: desc.value,
+    desc2: desc2.value
   })
 
   company.value = ''
   role.value = ''
   time.value = ''
   desc.value = ''
+  desc2.value = ''
 }
 
 function removeExp(index) {
@@ -42,6 +45,7 @@ function removeExp(index) {
       <input v-model="role" placeholder="职位" />
       <input v-model="time" placeholder="时间（如 2023-2024）" />
       <textarea v-model="desc" placeholder="描述"></textarea>
+      <textarea v-model="desc2" placeholder="描述2"></textarea>
 
       <button class="btn btn-primary" @click="addExp">添加经历</button>
     </div>
@@ -59,6 +63,7 @@ function removeExp(index) {
 
         <div class="role">{{ exp.role }}</div>
         <div class="desc">{{ exp.desc }}</div>
+        <div class="desc">{{ exp.desc2 }}</div>
 
         <button class="btn btn-danger" @click="removeExp(index)">删除</button>
       </div>
